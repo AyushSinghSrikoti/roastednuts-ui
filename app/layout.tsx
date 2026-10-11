@@ -6,6 +6,9 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import Link from "next/link";
 import { ToastContainer  } from "react-toast";
+import { Suspense } from "react";
+
+import { NavigationProgress } from "@/components/ui/navigation-progress";
 
 
 const inter = Inter({
@@ -22,6 +25,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={cn(inter.variable, "grid min-h-dvh grid-rows-[1fr_auto] font-sans")}>
+        <Suspense fallback={null}>
+          <NavigationProgress />
+        </Suspense>
         <div className="min-h-0 bg-[var(--almond-canvas)]">{children}</div>
         <footer className="border-t border-[var(--almond-border)]/15 bg-[var(--almond-canvas)] px-6 py-4 text-xs text-[var(--almond-muted)] lg:px-10">
           <div className="mx-auto flex w-full max-w-7xl flex-col items-center justify-between gap-3 sm:flex-row">
